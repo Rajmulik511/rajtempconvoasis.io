@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <h1 id="headeris">Temperature Converter</h1>
+    <h1 id="headern">Celsius to Fahrenheit</h1>
+    <div id="main_div">
+
+        <div id="container">
+            <form name="calculator" onsubmit="myfun();return false;">
+                <input type="number" id="temp" name="temp" >
+                <select id="select_temp" name="select_temp" id="select_temp">
+                    <option value="Celcius" name="celcius">Celcius</option>
+                    <option value="Fehranheit" name="fahrenheit">Fahrenheit</option>
+                    
+                </select> <br /><br />
+                <input type="submit" id="btn1" value="Convert" />
+            </form>
+
+        </div>
+
+        <div id="resultcontainer">
+            <span id="myresult"></span>
+        </div>
+    </div>
+    <script>
+        let result;
+        const myfun = () => {
+            let temp = document.getElementById('temp').value;
+            console.log(temp);
+            let tempselector = document.getElementById('select_temp');
+            let n = tempselector.options.selectedIndex;
+            let selectionis = tempselector.options[n].value;
+            if (selectionis == 'Celcius') {
+                result = ((temp * 1.8) + 32)
+                document.getElementById('myresult').innerHTML = ` ${temp} Degree ${selectionis} equals to ${result.toFixed(3)}  Fahrenheit`
+            }
+            else {
+                result = ((temp - 32) / 1.8);
+                document.getElementById('myresult').innerHTML = `${temp} Degree ${selectionis} equal to ${result.toFixed(3)} Celcius`
+            }
+        }
+    </script>
+</body>
+
+</html>
